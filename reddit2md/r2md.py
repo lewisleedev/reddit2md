@@ -9,8 +9,6 @@ def r2md(post, **kwargs):
                     post (:obj:`praw.models.Submission`): A Praw's submission object
                     file_name (str): File name for the converted markdown file. If left empty, post id will be the file name automatically. (file format(.md) should also be specified.)
                     timezone (str): Timezone for a posted time/date. Default is UTC.
-            Returns:
-                    True (bool): Returns true when file creation and writing is done.
     '''
 
     for key in kwargs:
@@ -64,6 +62,5 @@ def r2md(post, **kwargs):
         f.write("URL: {}".format(result["url"]) + '\n\n')
         f.write("Created: {} ({})".format(result["created_date"], timezone) + '\n\n')
         f.write("Subreddit: r/{}".format(result["subreddit"]))
-        return True
     except OSError as e:
         raise exceptions.reddit2mdOSError("OSError during file creation: {}".format(e))
